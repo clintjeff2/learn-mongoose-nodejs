@@ -1,13 +1,17 @@
 const User = require("./../models/user.model");
 
-const createUser = async (req, res) => {
-
-  await User.create(req.body);
-//   create, save, find, findById, findByIdAndDelete, findByIdAndUpdate, findOne, 
-
-  console.log(req.body);
-
-  res.status(200).json({ message: "We have received your request!" });
+exports.createUser = async (req, res) => {
+  const userData = await User.create(req.body);
+  //   create, save, find, findById, findByIdAndDelete, findByIdAndUpdate, findOne,
+  res
+    .status(201)
+    .json({ message: "User created successfully", data: userData });
 };
 
-module.exports = createUser;
+exports.getAllUsers = async (req, res) => {
+  const allUsers = await User.find();
+
+  res.status(200).json({ message: "Success", data: allUsers });
+};
+
+// module.exports = createUser;

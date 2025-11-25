@@ -1,10 +1,11 @@
 const express = require("express");
-const createUser = require("./controllers/user.controller");
+const userController = require("./controllers/user.controller");
 
 const app = express();
 
 app.use(express.json());
 
-app.post("/register", createUser);
+app.post("/register", userController.createUser);
+app.get("/users", userController.getAllUsers);
 
 module.exports = app;
