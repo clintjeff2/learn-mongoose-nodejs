@@ -66,6 +66,10 @@ const userSchema = new mongoose.Schema({
       message: "Passwords do not match, please try again!",
     },
   },
+  isDeleted: {
+    type: Boolean,
+    default: false,
+  }
 });
 
 const User = mongoose.model("user", userSchema);
